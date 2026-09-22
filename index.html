@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AssetAlign — Frequently Asked Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @page { size: letter; margin: 0.75in; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:  #0d1f33;
+    --navy2: #162b45;
+    --gold:  #f5a623;
+    --gold2: #e8c56a;
+    --gold3: #c9843a;
+    --cream: #f8f5ef;
+    --white: #ffffff;
+    --muted: #5a6a7a;
+    --border: #ddd8ce;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.65;
+    font-size: 12pt;
+  }
+
+  /* ── COVER (compact header band) ── */
+  .cover {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    padding: 28px 56px 26px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(245,166,35,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-inner {
+    position: relative;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .cover-left { display: flex; align-items: center; gap: 18px; }
+
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 19px; color: var(--navy);
+    flex-shrink: 0;
+  }
+  .cover-text-block { display: flex; flex-direction: column; gap: 2px; }
+
+  .cover-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--white); line-height: 1.15;
+    margin: 0;
+  }
+  .cover h1 em { font-style: normal; color: var(--gold); }
+
+  .cover-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 13px;
+    color: var(--gold2);
+    text-align: right;
+    max-width: 240px;
+    line-height: 1.4;
+  }
+
+  /* ── BODY ── */
+  .faq-body {
+    padding: 48px 56px 32px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .toc {
+    margin-bottom: 44px;
+    padding: 22px 26px;
+    background: var(--cream);
+    border-radius: 12px;
+    border-left: 3px solid var(--gold3);
+  }
+  .toc-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold3); margin-bottom: 14px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: faq;
+    columns: 2;
+    column-gap: 32px;
+  }
+  .toc ol li {
+    counter-increment: faq;
+    font-size: 12px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    padding-left: 22px;
+    position: relative;
+    break-inside: avoid;
+  }
+  .toc ol li::before {
+    content: counter(faq) ".";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--gold3);
+  }
+
+  .faq-item {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .faq-item:last-of-type { border-bottom: none; }
+
+  .faq-num {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold3);
+    margin-bottom: 6px;
+  }
+  .faq-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .faq-a {
+    font-size: 11.5pt;
+    color: #2a3a4d;
+    line-height: 1.6;
+  }
+  .faq-a p { margin-bottom: 8px; }
+  .faq-a p:last-child { margin-bottom: 0; }
+  .faq-a strong { color: var(--navy); font-weight: 600; }
+  .faq-a em { color: var(--gold3); font-style: normal; font-weight: 500; }
+
+  .pull-quote {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 11.5pt;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 32px;
+    padding: 28px 56px 40px;
+    background: var(--cream);
+    border-top: 2px solid var(--gold);
+    text-align: center;
+    page-break-inside: avoid;
+  }
+  .footer-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold3); margin-bottom: 10px;
+  }
+  .footer h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--navy); margin-bottom: 8px;
+  }
+  .footer p {
+    font-size: 12pt; color: var(--muted); margin-bottom: 16px;
+  }
+  .footer a {
+    color: var(--gold3); text-decoration: none; font-weight: 600;
+  }
+
+  .disclaimer {
+    margin-top: 24px;
+    padding: 18px 24px;
+    background: #fafaf6;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--muted);
+    text-align: left;
+  }
+  .disclaimer strong { color: var(--navy); }
+
+  .reg-info {
+    font-size: 9pt;
+    color: var(--muted);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { font-size: 11pt; }
+    .cover { padding: 22px 36px 20px; }
+    .cover h1 { font-size: 22px; }
+    .faq-body { padding: 30px 0 24px; }
+    .faq-item { margin-bottom: 22px; padding-bottom: 22px; }
+    .faq-q { font-size: 17px; }
+    .footer { padding: 24px 0 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────────────── HEADER BAND ─────────────────── -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-left">
+      <div class="logo-mark">A</div>
+      <div class="cover-text-block">
+        <div class="cover-eyebrow">AssetAlign · For HR &amp; Benefits Leaders</div>
+        <h1>Frequently Asked <em>Questions</em></h1>
+      </div>
+    </div>
+    <div class="cover-tagline">"One Benefit. Zero Cost. Real Returns."</div>
+  </div>
+</div>
+
+<!-- ─────────────────── FAQ BODY ─────────────────── -->
+<div class="faq-body">
+
+  <!-- Q1 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 01</div>
+    <div class="faq-q">What exactly is AssetAlign?</div>
+    <div class="faq-a">
+      <p>AssetAlign matches your employees with vetted financial advisors and delivers a real, personalized financial plan to every single one of them — at zero cost to you, and zero cost to them. Every employee. Regardless of income, account size, or where they're starting from.</p>
+      <p>Where most "financial wellness" platforms hand your team another app to log into, we hand them a person to call. That's the whole product.</p>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 02</div>
+    <div class="faq-q">Sounds too good to be true — what's the catch?</div>
+    <div class="faq-a">
+      <p>Think of it like your credit card rewards. You earn points and cash back for free — not because the bank is being generous, but because merchants fund the model. AssetAlign works the same way.</p>
+      <p>We've built a three-sided marketplace where financial advisors generate revenue through the platform when your employees choose to engage with them. A portion of that revenue flows back to your company as the Employer Flex Fund, and a portion flows back to employees as Employee Rewards. No fees. No invoices. No catch. Just a benefit that pays for itself — and then some.</p>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 03</div>
+    <div class="faq-q">Are AssetAlign and the advisors fiduciaries to our employees?</div>
+    <div class="faq-a">
+      <p>Yes — and we built it this way on purpose. ABTW Corporation, d/b/a AssetAlign, is registered as an investment adviser with the Massachusetts Securities Division. Every advisor in our network is independently licensed and individually fiduciary to the employee they're matched with. Their job is to act in your employee's best interest. Full stop.</p>
+      <p>Advisor compensation is structured so there are no kickbacks for steering employees into specific products. Compare that to the version of "free financial wellness" most companies have already seen — where the "advisor" turns out to be a product-pushing rep paid on commission. That was never going to be us.</p>
+    </div>
+  </div>
+
+  <!-- Q4 — THE BIG ONE -->
+  <div class="faq-item">
+    <div class="faq-num">Question 04</div>
+    <div class="faq-q">Does offering AssetAlign create any fiduciary liability for us?</div>
+    <div class="faq-a">
+      <p>No — and that was a design requirement, not an accident. ABTW Corporation, d/b/a AssetAlign, is the state-registered investment adviser of record, registered with the Massachusetts Securities Division and not with the SEC. The independent advisors in our network owe their fiduciary duty directly to the employee they're working with — not to you.</p>
+      <p>Because the benefit is voluntary, employee-elected, not funded by you, and not endorsed by you in the ERISA sense, it sits inside the Department of Labor's voluntary plan safe harbor at 29 C.F.R. § 2510.3-1(j). That's the same structure the rest of the workplace financial wellness category relies on to keep employers out of co-fiduciary territory.</p>
+      <p>Run it past your own ERISA counsel before rollout, of course — and we're happy to share the full legal framework on a follow-up call.</p>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 05</div>
+    <div class="faq-q">How are advisors vetted before they get on the platform?</div>
+    <div class="faq-a">
+      <p>Every advisor in our network goes through a thorough screening process before they ever see one of your employees. We verify licensing and disciplinary history, confirm experience and breadth of practice, and assess whether they're genuinely a fit for an employee population — which means meeting people where they actually are, not just where their portfolio is.</p>
+      <p>Advisors who make it through become part of the Advisor Library, with profiles and specialties your employees can review before they book.</p>
+    </div>
+  </div>
+
+  <!-- Q6 — NEW: ADVISOR REGULATION -->
+  <div class="faq-item">
+    <div class="faq-num">Question 06</div>
+    <div class="faq-q">How are the advisors on AssetAlign actually regulated?</div>
+    <div class="faq-a">
+      <p>Financial advisors are some of the most-regulated professionals in the country. Four layers of accountability stack up behind every conversation an employee has.</p>
+      <p><strong>Individual level.</strong> Every advisor holds the required securities licenses (Series 65 or 66 for fiduciary investment advice; Series 7, 6, or 63 for brokerage work where applicable) plus any state insurance licenses. Their full career record — every employer, disclosure, complaint, and regulatory action — is publicly searchable on FINRA BrokerCheck and the SEC's IAPD.</p>
+      <p><strong>Firm level.</strong> Each advisor operates under a Registered Investment Adviser or broker-dealer that files an annual Form ADV, employs a Chief Compliance Officer, maintains a written compliance program under SEC Rule 206(4)-7, and is subject to periodic regulator examination.</p>
+      <p><strong>Trade level.</strong> Inside each firm, recommendations are reviewed by compliance for suitability, best execution, and conflicts of interest. Regulation Best Interest applies to brokerage activity; full fiduciary duty applies to advisory work. Any disclosure event updates the public BrokerCheck record within days.</p>
+      <p><strong>AssetAlign level.</strong> We rescreen every advisor annually against BrokerCheck, IAPD, and state regulator filings, and require network advisors to sign a written code of conduct that goes beyond the regulatory minimum — no product-pushing, no kickbacks, no misaligned compensation.</p>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 07</div>
+    <div class="faq-q">What's involved in launching AssetAlign at our company?</div>
+    <div class="faq-a">
+      <p>Honestly — almost nothing on your end. No open enrollment changes. No employee communications you have to write. No IT integration to sort out. No HRIS work to negotiate with your broker. No line item on your benefits budget. Ever.</p>
+      <p>We handle everything — enrollment, onboarding, ongoing employee communication — so you can offer a real financial wellness benefit without adding a single item to your to-do list. Most employers go from signed agreement to live in days, not months.</p>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 08</div>
+    <div class="faq-q">What if some of our employees already have a financial advisor?</div>
+    <div class="faq-a">
+      <p>That's the most common pattern — and it's not a problem. AssetAlign complements; it doesn't displace. Employees with an existing advisor keep them. AssetAlign is still useful as a second opinion, for their spouse or adult children, or for situations their primary advisor doesn't focus on.</p>
+      <p>The bigger reason this matters: most of your workforce probably doesn't have an advisor — usually because they assume they don't have "enough money to be worth it" to one. AssetAlign removes that barrier.</p>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="faq-item">
+    <div class="faq-num">Question 09</div>
+    <div class="faq-q">How do we measure engagement and prove the impact?</div>
+    <div class="faq-a">
+      <p>HR teams get periodic engagement summaries — aggregated and anonymized — showing how much of your workforce is actively engaging, how often, and the kinds of financial situations being worked on.</p>
+      <p>Individual employee conversations are never shared with the employer. What you get is exactly what you need to communicate the value internally to leadership — without compromising the trust your employees place in their advisor relationship.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─────────────────── FOOTER ─────────────────── -->
+<div class="footer">
+  <div class="footer-eyebrow">Next Step</div>
+  <h3>Want to keep digging?</h3>
+  <p>Reach out and we'll walk you through the legal framework, the advisor network, and what a launch would look like for your specific headcount.</p>
+  <p><a href="mailto:support@assetalign.net">support@assetalign.net</a></p>
+
+  <div class="disclaimer">
+    <strong>Important.</strong> This document is provided for informational purposes only. It is not legal, tax, or investment advice. The ERISA safe-harbor analysis in Question 05 reflects AssetAlign's general framework based on the U.S. Department of Labor's voluntary-plan safe harbor at 29 C.F.R. § 2510.3-1(j); your specific facts and the structure of your benefit offering should be reviewed by your own ERISA counsel before rollout. Investment advisory services are provided by ABTW Corporation, d/b/a AssetAlign, an investment adviser registered with the Massachusetts Securities Division and not registered with the U.S. Securities and Exchange Commission (SEC); registration does not imply a particular level of skill or training. Advisors in the AssetAlign network are independently licensed and individually fiduciary to the employees they are matched with.
+  </div>
+
+  <div class="reg-info">
+    AssetAlign · CRD #329950 · Massachusetts state-registered investment adviser (not SEC-registered) · Form ADV Part 2 available on request.
+  </div>
+</div>
+
+</body>
+</html>
